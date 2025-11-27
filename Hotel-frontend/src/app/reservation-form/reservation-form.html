@@ -1,0 +1,61 @@
+<div class="container fade-in mt-5">
+  <div class="card shadow border-0">
+    <div class="card-body p-5">
+
+      <h2 class="mb-4 text-center fw-bold">Crear Nueva Reserva</h2>
+      <hr class="mb-4">
+
+      <form (ngSubmit)="onSubmit()" #reservaForm="ngForm">
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <h5 class="text-muted mb-3">1. Fechas de Estancia</h5>
+
+            <div class="mb-3">
+              <label class="form-label">Fecha de Entrada</label>
+              <input type="date" class="form-control"
+                     name="entrada" [(ngModel)]="reserva.fechaEntrada" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Fecha de Salida</label>
+              <input type="date" class="form-control"
+                     name="salida" [(ngModel)]="reserva.fechaSalida" required>
+            </div>
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <h5 class="text-muted mb-3">2. Detalles de Hospedaje</h5>
+
+            <div class="mb-3">
+              <label class="form-label">Seleccionar Habitación</label>
+              <select class="form-select" name="habitacion"
+                      [(ngModel)]="reserva.habitacionId" required>
+                <option value="" disabled selected>-- Elige una habitación --</option>
+                <option *ngFor="let h of habitacionesDisponibles" [value]="h.id">
+                  Hab. {{h.numero}} - {{h.tipo}}
+                </option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">ID del Cliente</label>
+              <input type="number" class="form-control" placeholder="Ej. 1"
+                     name="clienteId" [(ngModel)]="reserva.clienteId" required>
+              <div class="form-text">Ingresa el ID del cliente registrado.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid mt-4">
+          <button type="submit" class="btn btn-primary btn-lg"
+                  [disabled]="!reservaForm.form.valid">
+            Confirmar Reserva
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

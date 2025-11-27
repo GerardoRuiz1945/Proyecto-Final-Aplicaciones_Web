@@ -1,0 +1,26 @@
+.hover-gold {
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #D4AF37 !important;
+    text-decoration: underline !important;
+  }
+}
+
+footer {
+  border-top: 5px solid #D4AF37;
+}
+
+.social-icon {
+  border-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #D4AF37 !important;
+    border-color: #D4AF37 !important;
+    transform: translateY(-3px);
+
+    color: #0D0C1F !important;
+
+  }
+}

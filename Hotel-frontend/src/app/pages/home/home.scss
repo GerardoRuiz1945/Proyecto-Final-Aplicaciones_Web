@@ -1,0 +1,17 @@
+/* Estilo para las imágenes del carrusel */
+.carousel-img {
+    /* CAMBIO: Aumentamos de 500px a 750px para que se vea GIGANTE */
+    height: 750px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra un poco más fuerte para resaltar */
+}
+
+/* Ajuste para pantallas pequeñas (celulares) */
+@media (max-width: 768px) {
+    .carousel-img {
+        /* También lo hacemos más grande en celular (antes era 300px) */
+        height: 450px;
+    }
+}

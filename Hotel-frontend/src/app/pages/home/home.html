@@ -1,0 +1,72 @@
+<div class="px-4 py-5 my-5 text-center fade-in">
+
+    <h1 class="display-4 fw-bold text-primary mb-3">Bienvenido a Hotel Paraíso</h1>
+
+    <div class="col-lg-10 mx-auto">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <p class="lead mb-5 text-muted">
+            Descubre el descanso que mereces. Habitaciones de lujo, gastronomía exquisita y la mejor ubicación de la ciudad.
+          </p>
+        </div>
+      </div>
+
+      <div id="carruselHotel" class="carousel slide mb-5 shadow rounded overflow-hidden" data-bs-ride="carousel">
+
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carruselHotel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#carruselHotel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carruselHotel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="4000">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                 class="d-block w-100 carousel-img" alt="Piscina">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Piscina Infinity</h5>
+              <p>Disfruta del sol y nuestros cócteles exclusivos.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                 class="d-block w-100 carousel-img" alt="Restaurante">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Gastronomía Mundial</h5>
+              <p>Sabores locales e internacionales.</p>
+            </div>
+          </div>
+
+          <div class="carousel-item" data-bs-interval="4000">
+            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                 class="d-block w-100 carousel-img" alt="Suite">
+            <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+              <h5>Confort Inigualable</h5>
+              <p>Suites diseñadas para tu máximo descanso.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carruselHotel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carruselHotel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+      </div>
+
+      <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+        <a routerLink="/habitaciones" class="btn btn-primary btn-lg px-5 shadow-sm">
+          <i class="bi bi-door-open me-2"></i>Ver Habitaciones
+        </a>
+        <a routerLink="/nueva-reserva" class="btn btn-outline-secondary btn-lg px-5 shadow-sm">
+          <i class="bi bi-calendar-check me-2"></i>Hacer Reserva
+        </a>
+      </div>
+
+    </div>
+</div>

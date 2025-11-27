@@ -1,0 +1,51 @@
+<div class="container fade-in mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold" style="color: #0D0C1F;">Reservas Actuales</h2>
+    <a routerLink="/nueva-reserva" class="btn btn-primary">
+      + Nueva Reserva
+    </a>
+  </div>
+
+  <div class="card shadow-sm border-0">
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped align-middle mb-0">
+          <thead class="bg-light">
+            <tr>
+              <th class="py-3 ps-4">Cliente</th>
+              <th class="py-3">Habitación</th>
+              <th class="py-3">Fecha Entrada</th>
+              <th class="py-3">Fecha Salida</th>
+              <th class="py-3">Total</th>
+              <th class="py-3">Estado</th>
+              <th class="py-3 text-end pe-4">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reserva of reservas">
+              <td class="ps-4 fw-bold">{{ reserva.cliente }}</td>
+              <td>{{ reserva.habitacion }}</td>
+              <td>{{ reserva.entrada | date:'dd/MM/yyyy' }}</td>
+              <td>{{ reserva.salida | date:'dd/MM/yyyy' }}</td>
+              <td class="fw-bold text-success">{{ reserva.total | currency }}</td>
+              <td>
+                <span [class]="getEstadoClass(reserva.estado)">
+                  {{ reserva.estado }}
+                </span>
+              </td>
+              <td class="text-end pe-4">
+                <button class="btn btn-sm btn-outline-danger" (click)="eliminarReserva(reserva.id)">
+                  Cancelar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="reservas.length === 0" class="alert alert-info mt-3 text-center">
+    No hay reservas registradas en el sistema.
+  </div>
+</div>

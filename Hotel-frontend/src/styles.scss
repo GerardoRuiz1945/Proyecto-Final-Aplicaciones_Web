@@ -1,0 +1,77 @@
+:root {
+    --color-fondo: #F9F7F2;
+    --color-oscuro: #0D0C1F;
+    --color-dorado: #D4AF37;
+    --color-dorado-suave: #C5A059;
+    --color-azul: #8299C9;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-oscuro);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bg-primary {
+    background-color: var(--color-oscuro) !important;
+}
+
+.btn-primary {
+    background-color: var(--color-dorado);
+    border-color: var(--color-dorado);
+    color: var(--color-oscuro);
+    font-weight: bold;
+
+    &:hover {
+        background-color: var(--color-dorado-suave);
+        border-color: var(--color-dorado-suave);
+        color: white;
+    }
+}
+
+.btn-outline-secondary {
+    color: var(--color-azul);
+    border-color: var(--color-azul);
+
+    &:hover {
+        background-color: var(--color-azul);
+        color: white;
+    }
+}
+
+h1, h2, h3, .text-primary {
+    color: var(--color-oscuro) !important;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.navbar {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    min-height: 100px;
+}
+
+body {
+    padding-top: 120px;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .display-4, .display-5, .display-6 {
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 0.5px;
+}
+
+body, p, a, button, .btn, input, select, li {
+    font-family: 'Raleway', sans-serif;
+}
+
+.display-4 {
+    font-weight: 700;
+}
