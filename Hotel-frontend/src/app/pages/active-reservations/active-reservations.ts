@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HotelService } from '../../services/hotel';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-active-reservations',
@@ -13,27 +14,25 @@ import { HotelService } from '../../services/hotel';
 export class ActiveReservationsComponent implements OnInit {
 
   reservas: any[] = [];
+  currentUser: any = null;
 
-  constructor(private hotelService: HotelService) {}
+  constructor(private hotelService: HotelService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.obtenerReservas();
-  }
 
-
-  obtenerReservas() {
-    this.hotelService.getReservas().subscribe({
-      next: (data: any) => {
-        this.reservas = data;
-        console.log('Reservas cargadas:', data);
-      },
-      error: (error: any) => {
-        console.error('Error al cargar reservas:', error);
-      }
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
     });
   }
 
-  // 2. Función visual para los colores
+  obtenerReservas() {
+    this.hotelService.getReservas().subscribe({
+      next: (data: any) => this.reservas = data,
+      error: (err: any) => console.error(err)
+    });
+  }
+
   getEstadoClass(estado: string): string {
     switch (estado) {
       case 'Confirmada': return 'badge bg-success';
@@ -42,22 +41,15 @@ export class ActiveReservationsComponent implements OnInit {
     }
   }
 
-  // 3. Eliminar una reserva real
   eliminarReserva(id: number) {
     if(confirm('¿Estás seguro de cancelar esta reserva permanentemente?')) {
-
       this.hotelService.eliminarReserva(id).subscribe({
         next: () => {
-
           this.reservas = this.reservas.filter(r => r.id !== id);
           alert('Reserva cancelada correctamente.');
         },
-        error: (err: any) => {
-          console.error('Error al eliminar:', err);
-          alert('No se pudo cancelar la reserva.');
-        }
+        error: (err: any) => alert('Error al cancelar.')
       });
-
     }
   }
 }

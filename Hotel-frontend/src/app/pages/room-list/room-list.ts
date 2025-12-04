@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HotelService } from '../../services/hotel';
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-room-list',
@@ -13,23 +14,24 @@ import { HotelService } from '../../services/hotel';
 export class RoomListComponent implements OnInit {
 
   habitaciones: any[] = [];
+  currentUser: any = null;
 
 
-  constructor(private hotelService: HotelService) {}
+  constructor(private hotelService: HotelService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.obtenerHabitaciones();
+
+
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+    });
   }
 
   obtenerHabitaciones() {
     this.hotelService.getHabitaciones().subscribe({
-      next: (data:any) => {
-        console.log('Datos recibidos de MySQL:', data);
-        this.habitaciones = data;
-      },
-      error: (error:any) => {
-        console.error('Error obteniendo habitaciones:', error);
-      }
+      next: (data: any) => this.habitaciones = data,
+      error: (error: any) => console.error(error)
     });
   }
 }

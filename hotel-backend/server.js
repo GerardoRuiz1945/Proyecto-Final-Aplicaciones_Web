@@ -17,10 +17,10 @@ const db = mysql.createConnection({
 //Conectar a MySQL
 db.connect(err => {
     if (err) {
-        console.error('❌ Error conectando a la Base de Datos:', err);
+        console.error('Error conectando a la Base de Datos:', err);
         return;
     }
-    console.log('✅ Conectado exitosamente a MySQL (hotel_db)');
+    console.log('Conectado exitosamente a MySQL (hotel_db)');
 });
 
 
@@ -101,8 +101,31 @@ app.delete('/api/reservas/:id', (req, res) => {
     });
 });
 
+
+//LOGIN
+app.post('/api/login', (req, res) => {
+    const { email, password } = req.body;
+    
+    const sql = 'SELECT * FROM usuarios WHERE email = ? AND password = ?';
+    
+    db.query(sql, [email, password], (err, results) => {
+        if (err) return res.status(500).json(err);
+        
+        if (results.length > 0) {
+            const usuario = results[0];
+            res.json({ 
+                success: true, 
+                message: 'Login correcto', 
+                user: { id: usuario.id, nombre: usuario.nombre, email: usuario.email } 
+            });
+        } else {
+            res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
+        }
+    });
+});
+
 // Iniciar servidor
 const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });

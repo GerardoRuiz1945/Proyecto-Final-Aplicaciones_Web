@@ -1,7 +1,7 @@
 <div class="container fade-in mt-4">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h2 class="fw-bold" style="color: #0D0C1F;">Reservas Actuales</h2>
-    <a routerLink="/nueva-reserva" class="btn btn-primary">
+    <a *ngIf="currentUser" routerLink="/nueva-reserva" class="btn btn-primary">
       + Nueva Reserva
     </a>
   </div>
@@ -34,7 +34,7 @@
                 </span>
               </td>
               <td class="text-end pe-4">
-                <button class="btn btn-sm btn-outline-danger" (click)="eliminarReserva(reserva.id)">
+                <button *ngIf="currentUser" class="btn btn-sm btn-outline-danger" (click)="eliminarReserva(reserva.id)">
                   Cancelar
                 </button>
               </td>
